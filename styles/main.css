@@ -1,0 +1,73 @@
+@layer reset, fonts, tokens, base, layout, components, utilities, responsive, states;
+
+@import url('./reset.css') layer(reset);
+@import url('./fonts.css') layer(fonts);
+@import url('./tokens.css') layer(tokens);
+
+@layer base {
+  body {
+    padding-block-start: var(--spacing-300);
+    font-family: var(--ff-base);
+    font-weight: var(--fw-normal);
+    font-size: var(--fs-300);
+    background-color: var(--color-bg-default);
+    color: var(--color-text-primary);
+  }
+}
+
+@layer layout {
+
+  .container {
+    inline-size: clamp(21.4375rem, 91vw, 69.375rem);
+    margin-inline: auto;
+  }
+
+  /* HEADER */
+  .header__inner {
+    justify-content: space-between;
+  }
+}
+
+@layer components {
+
+  /* BUTTONS */
+  .button {
+    font-size: var(--fs-300);
+    font-weight: var(--fw-bold);
+    letter-spacing: -.16px;
+    border: 1px solid var(--color-bg-primary);
+    border-radius: var(--radius-100);
+  }
+
+  .button--secondary {
+    padding: var(--spacing-200) var(--spacing-250) var(--spacing-150);
+    background-color: transparent;
+  }
+
+  /* LOGO */
+  .logo {
+    padding: var(--spacing-075) var(--spacing-100);
+    display: inline-block;
+    border-radius: var(--radius-100);
+  }
+}
+
+@layer utilities {
+
+  .cluster {
+    display: flex;
+    align-items: center;
+    gap: var(--cluster-space, 1rem);
+  }
+}
+
+@layer responsive {
+
+  @media (width >=48rem) {
+
+    /* BUTTON */
+    .button--secondary {
+      padding-inline: var(--spacing-300);
+    }
+  }
+}
