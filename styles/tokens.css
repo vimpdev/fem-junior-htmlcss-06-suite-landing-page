@@ -13,6 +13,7 @@
 
     --color-text-primary: var(--color-neutral-900);
     --color-text-secondary: var(--color-neutral-500);
+    --color-text-tertiary: var(--color-neutral-200);
     --color-text-inverse: var(--color-neutral-50);
 
     --color-focus-ring: var(--color-neutral-900);
@@ -52,6 +53,7 @@
     --fs-800: 3.5rem;
     --fs-900: 4.5rem;
 
-    --radius-100: 6px;
+    --radius-100: 0.375rem;
+    --radius-200: 0.9375rem;
   }
 }
