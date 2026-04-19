@@ -26,17 +26,64 @@
   .header__inner {
     justify-content: space-between;
   }
+
+  /* INTRO */
+  .intro {
+    margin-block-start: var(--spacing-800);
+  }
+
+  .intro__inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: var(--spacing-800);
+
+    &::after {
+      position: absolute;
+      content: '';
+      inset: 0;
+      top: -1.5rem;
+      left: 10.5rem;
+      background: url('./../assets/images/patterns/curved-line-1.svg') no-repeat;
+      background-size: 8rem;
+    }
+  }
+
+  .intro__content {
+    --stack-space: var(--spacing-500);
+    align-items: flex-start;
+  }
+
+  .intro__text {
+    --stack-space: var(--spacing-300);
+  }
 }
 
 @layer components {
+
+  /* STATS */
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-500);
+    text-align: center;
+  }
 
   /* BUTTONS */
   .button {
     font-size: var(--fs-300);
     font-weight: var(--fw-bold);
-    letter-spacing: -.16px;
+    letter-spacing: -0.01em;
     border: 1px solid var(--color-bg-primary);
     border-radius: var(--radius-100);
+  }
+
+  .button--primary {
+    padding-inline: var(--spacing-400);
+    padding-block: var(--spacing-250) var(--spacing-200);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-inverse);
   }
 
   .button--secondary {
@@ -50,6 +97,41 @@
     display: inline-block;
     border-radius: var(--radius-100);
   }
+
+  /* TYPOGRAPHY */
+  .intro__title {
+    max-inline-size: 16ch;
+    font-size: var(--fs-600);
+    font-weight: var(--fw-normal);
+    letter-spacing: -0.014em;
+    line-height: 1.1;
+  }
+
+  .intro__highlight {
+    font-weight: var(--fw-bold);
+  }
+
+  .intro__description {
+    max-inline-size: 35ch;
+    font-size: var(--fs-400);
+    letter-spacing: 0.006em;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .stats__value {
+    font-size: var(--fs-700);
+    font-weight: var(--fw-bold);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .stats__label {
+    font-size: var(--fs-300);
+    text-transform: uppercase;
+    letter-spacing: 0.1563em;
+    color: var(--color-text-secondary);
+  }
 }
 
 @layer utilities {
@@ -59,15 +141,112 @@
     align-items: center;
     gap: var(--cluster-space, 1rem);
   }
+
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--stack-space, 1rem);
+  }
 }
 
 @layer responsive {
 
   @media (width >=48rem) {
 
+    /* INTRO */
+    .intro {
+      margin-block-start: var(--spacing-1000);
+    }
+
+    .intro__inner {
+      position: relative;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: start;
+      row-gap: var(--spacing-1000);
+      column-gap: var(--spacing-0);
+
+      &::after {
+        left: 19rem;
+        top: 1.5rem;
+        background-size: unset;
+      }
+    }
+
+    .intro__content {
+      --stack-space: var(--spacing-600);
+      position: absolute;
+      top: 0;
+      transform: translateY(calc(var(--spacing-1000) + var(--spacing-075)));
+    }
+
+    .intro__text {
+      --stack-space: var(--spacing-500);
+    }
+
+    /* STATS */
+    .stats {
+      inline-size: 100%;
+      grid-column: 1/-1;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-800);
+    }
+
+    /* IMAGES */
+    .intro__media {
+      grid-column: 2/-1;
+      justify-self: end;
+      inline-size: clamp(17.5rem, 80%, 21.875rem);
+    }
+
     /* BUTTON */
     .button--secondary {
       padding-inline: var(--spacing-300);
+    }
+
+    /* TYPOGRAPHY */
+    .intro__title {
+      font-size: var(--fs-800);
+      letter-spacing: 0.0018em;
+    }
+  }
+
+  @media (width >=70rem) {
+
+    /* INTRO */
+    .intro__inner {
+      grid-template-columns: auto 1fr 11.875rem;
+      column-gap: calc(var(--spacing-1000) + var(--spacing-250));
+
+      &::after {
+        top: 2.5rem;
+      }
+    }
+
+    .intro__content {
+      --stack-space: var(--spacing-800);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* STATS */
+    .stats {
+      grid-column: 3/-1;
+      align-self: center;
+      max-inline-size: 11.875rem;
+      grid-template-columns: 1fr;
+      justify-items: start;
+      text-align: left;
+    }
+
+    /* IMAGES */
+    .intro__media {
+      grid-column: 2/3;
+    }
+
+    /* TYPOGRAPHY */
+    .intro__title {
+      font-size: var(--fs-900);
+      letter-spacing: -0.014em;
     }
   }
 }
