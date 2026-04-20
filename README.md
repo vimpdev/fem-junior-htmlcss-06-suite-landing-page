@@ -16,7 +16,7 @@ This is a solution to the [Suite landing page challenge on Frontend Mentor](http
 ## 🔗 Links
 
 - 🌎 [Live site](https://vimpdev.github.io/fem-junior-htmlcss-06-suite-landing-page/)
-<!-- - 📌 [Frontend Mentor solution]() -->
+- 📌 [Frontend Mentor solution](https://www.frontendmentor.io/solutions/suite-landing-page-semantic-html-and-scalable-css-layer-7gCKe6ZXH_)
 
 ---
 
