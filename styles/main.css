@@ -131,20 +131,43 @@
   }
 
   .button--primary {
+    position: relative;
     padding-inline: var(--spacing-400);
     padding-block: var(--spacing-250) var(--spacing-200);
     background-color: var(--color-bg-primary);
     color: var(--color-text-inverse);
+    border: none;
+    isolation: isolate;
+
+    &::before {
+      position: absolute;
+      content: '';
+      inset: 0;
+      background: var(--color-interactive-hover);
+      border-radius: inherit;
+      transition: opacity var(--transition-fast);
+      opacity: 0;
+      z-index: -1;
+    }
   }
 
   .button--secondary {
     padding: var(--spacing-200) var(--spacing-250) var(--spacing-150);
     background-color: transparent;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
   }
 
   /* SOCIAL */
   .social__list {
     --cluster-space: var(--spacing-400);
+  }
+
+  .social__link {
+    padding: .2em;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    transition: background-color var(--transition-fast);
   }
 
   /* LOGO */
@@ -278,6 +301,8 @@
       inline-size: 100%;
       block-size: 0.125rem;
       background-color: currentColor;
+      transition: inline-size var(--transition-fast);
+      pointer-events: none;
     }
   }
 }
@@ -470,5 +495,31 @@
     .testimonial__quote {
       max-inline-size: 30ch;
     }
+  }
+}
+
+@layer states {
+  @media (hover:hover) {
+
+    .button--secondary:hover {
+      background-color: var(--color-interactive-hover-secondary);
+      color: var(--color-text-inverse);
+    }
+
+    .button--primary:hover::before {
+      opacity: 1;
+    }
+
+    .social__link:hover {
+      background-color: var(--color-interactive-icon-hover);
+    }
+  }
+
+  :focus-visible {
+    outline-color: var(--color-focus-ring);
+  }
+
+  .attribution__link:is(:hover, :focus-visible)::after {
+    inline-size: 0;
   }
 }
