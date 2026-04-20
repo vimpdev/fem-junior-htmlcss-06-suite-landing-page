@@ -96,6 +96,19 @@
   .testimonial__header {
     --stack-space: var(--spacing-400);
   }
+
+  /* FOOTER */
+  .footer {
+    padding-block-start: calc(var(--spacing-800) + var(--spacing-100));
+    padding-block-end: var(--spacing-500);
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: var(--spacing-400);
+  }
 }
 
 @layer components {
@@ -129,6 +142,11 @@
     background-color: transparent;
   }
 
+  /* SOCIAL */
+  .social__list {
+    --cluster-space: var(--spacing-400);
+  }
+
   /* LOGO */
   .logo {
     padding: var(--spacing-075) var(--spacing-100);
@@ -153,6 +171,12 @@
   .testimonial__pattern {
     block-size: 3.25rem;
     background: url('./../assets/images/patterns/curved-line-2.svg') no-repeat center top;
+  }
+
+  /* ICON */
+  .social__icon {
+    block-size: 1.8rem;
+    aspect-ratio: 1;
   }
 
   /* TYPOGRAPHY */
@@ -227,6 +251,34 @@
     letter-spacing: 0.1563em;
     line-height: 1.65;
     color: var(--color-text-tertiary);
+  }
+
+  .footer__copy {
+    font-size: var(--fs-200);
+    color: var(--color-text-secondary);
+  }
+
+  .attribution {
+    font-size: var(--fs-100);
+    text-align: center;
+    color: var(--color-text-secondary);
+  }
+
+  .attribution__link {
+    position: relative;
+    margin-inline: .5em;
+    font-weight: var(--fw-bold);
+    text-decoration: none;
+
+    &::after {
+      position: absolute;
+      content: '';
+      bottom: -0.125rem;
+      right: 0;
+      inline-size: 100%;
+      block-size: 0.125rem;
+      background-color: currentColor;
+    }
   }
 }
 
@@ -305,11 +357,27 @@
       gap: var(--spacing-800);
     }
 
+    /* FOOTER */
+    .footer__inner {
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      row-gap: var(--spacing-100);
+    }
+
+    /* SOCIAL */
+    .social {
+      justify-self: end;
+    }
+
     /* IMAGES */
     .intro__media {
       grid-column: 2/-1;
       justify-self: end;
       inline-size: clamp(17.5rem, 80%, 21.875rem);
+    }
+
+    .footer .logo {
+      justify-self: start;
     }
 
     /* BUTTON */
@@ -321,6 +389,10 @@
     .intro__title {
       font-size: var(--fs-800);
       letter-spacing: 0.0018em;
+    }
+
+    .attribution {
+      grid-column: 1/-1;
     }
   }
 
